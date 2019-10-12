@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<!--[if IE 6 ]><html id="ne_wrap" class="ne_ua_ie6 ne_ua_ielte8"><![endif]-->
+<!--[if IE 7 ]><html id="ne_wrap" class="ne_ua_ie7 ne_ua_ielte8"><![endif]-->
+<!--[if IE 8 ]><html id="ne_wrap" class="ne_ua_ie8 ne_ua_ielte8"><![endif]-->
+<!--[if IE 9 ]><html id="ne_wrap" class="ne_ua_ie9"><![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html id="ne_wrap"><!--<![endif]-->
+<head>
+    <%
+        data.channelConfigName = "网易财经";
+        data.channelConfigUrl = "http://money.163.com/";
+        data.channelConfigPathName = "财经频道";
+        data.channelConfigHomeName = "财经首页";
+        data.channelConfigLogo = "https://static.ws.126.net/cnews/css13/img/logo_money.png";
+        data.channelConfigEndicon = "https://static.ws.126.net/cnews/css13/img/end_money.png";
+        data.keywords = data.dkeys ? data.dkeys.replace('"', '＂') : '';
+        data.description = data.description ? data.description : (data.digest ? data.digest : data.title);
+        //时间格式处理
+        Date.prototype.format=function(format){var date={"M+":this.getMonth()+1,"d+":this.getDate(),"h+":this.getHours(),"m+":this.getMinutes(),"s+":this.getSeconds(),"q+":Math.floor((this.getMonth()+3)/3),"S+":this.getMilliseconds()};if(/(y+)/i.test(format)){format=format.replace(RegExp.$1,(this.getFullYear()+'').substr(4-RegExp.$1.length))}for(var k in date){if(new RegExp("("+k+")").test(format)){format=format.replace(RegExp.$1,RegExp.$1.length==1?date[k]:("00"+date[k]).substr((""+date[k]).length))}}return format}
+        data.formatedTime = new Date(data.ptime).format('yyyy-MM-dd hh:mm:ss')
+    %>
+    <title>{{data.title}}_{{data.channelConfigName}}</title>
+    <base target="_blank"><!--[if lte IE 6]></base><![endif]-->
+    <link rel="icon" href="https://www.163.com/favicon.ico" type="image/x-icon">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="keywords" content="{{data.keywords}}">
+    <meta name="description" content="{{data.description}}">
+    <meta name="author" content="网易">
+    <meta name="Copyright" content="网易版权所有">
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <meta property="og:title" content="{{data.title}}">
+    <meta property="og:type" content="news">
+    <meta property="og:description" content="{{data.description}}">
+    <meta property="article:author" content="网易">
+    <meta property="article:published_time" content="{{data.formatedTime.replace(' ','T')}}+08:00">
+    <!--#include virtual="/special/ntes_common_model/post_1603_css.html" -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://static.ws.126.net/163/f2e/post_nodejs/libs/js/html5shiv.min.js"></script><script type="text/javascript" src="https://static.ws.126.net/163/f2e/post_nodejs/libs/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- header -->
+    <!--#include virtual="/special/sp/post_1603_header.html" -->
+    <script>
+        window.__STOCK_COMPONENT__ = [];
+        // 初始化body宽度
+        function getWindowSize(){if(window.innerHeight){return{'width':window.innerWidth,'height':window.innerHeight}}else if(document.documentElement&&document.documentElement.clientHeight){return{'width':document.documentElement.clientWidth,'height':document.documentElement.clientHeight}}else if(document.body){return{'width':document.body.clientWidth,'height':document.body.clientHeight}}}var DEFAULT_VERSION="9.0";var ua=navigator.userAgent.toLowerCase();var isIE=ua.indexOf("msie")>-1;var safariVersion;if(isIE){safariVersion=ua.match(/msie ([\d.]+)/)[1]}if(safariVersion<=DEFAULT_VERSION){if(safariVersion==7){NE(document.body).addClass("w9")}}function resizeNav(){if(getWindowSize().width<1366&&safariVersion!=7){NE(document.body).addClass("w9")}if(getWindowSize().width>=1366&&safariVersion!=7){NE(document.body).removeClass("w9")}};resizeNav();
+        // 正文图集封面
+        <% if (data.photosetCovers && data.photosetCovers.length) {%>
+        window.photosetCovers = {{data.photosetCovers}};
+        <% } %>
+    </script>
+    <!-- content -->
+    <div class="container">
+        <h1>{{data.title}}</h1>
+        <hr>
+        <p>发布时间：{{data.formatedTime}}</p>
+    </div>
+    <!-- footer -->
+    <!--#include virtual="/special/ntes_common_model/ntes_nav_bottom_v2.html" -->
+    <!-- tong'ji -->
+    <!--#include virtual="/special/sp/tongji_2013.html" -->
+    <% if (!data.hideAd) {%>
+    <!--#include virtual="/special/sp/ad_end.html" -->
+    <% } %>
+</body>
+</html>
