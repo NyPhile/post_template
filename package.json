@@ -3,6 +3,7 @@
   "channel": "product",
   "version": "0.0.1",
   "description": "文章页模板",
+  "projectId": "NTM-LEST41Y4-51",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --mode development --open --config ./webpack.dev.config.js",
@@ -20,7 +21,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "easeftp": "^2.0.40",
-    "eslint": "^6.0.1",
+    "eslint": "^6.5.1",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.2.1",
     "file-loader": "^4.0.0",
@@ -30,7 +31,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.7.0",
-    "ne-node-parse-loader": "0.0.1",
+    "ne-node-parse-loader": "0.0.2",
     "ne-ssi-loader": "0.0.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-autosize": "^1.0.1",
@@ -51,9 +52,9 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
     "Android >= 4.4",
-    "iOS >= 8"
+    "iOS >= 8",
+    "ie > 8"
   ],
   "license": "ISC"
 }

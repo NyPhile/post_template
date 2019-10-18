@@ -84,6 +84,7 @@ module.exports = merge(baseWebpackConfig, {
           loader: 'ne-node-parse-loader',
           options: {
             data: articleData.data,
+            // or data: 'https://news.163.com/19/0902/16/EO350JR40001982U.html',
             channels: channels
           }
         },{
